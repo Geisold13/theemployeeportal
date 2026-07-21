@@ -5,3 +5,9 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/the_employee_portal
     username: Geisold13
     password: geballer1313B
+  jpa:
+    hibernate:
+      ddl-auto: update
+  docker:
+    compose:
+      enabled: false  #this disables the docker compose file for now
