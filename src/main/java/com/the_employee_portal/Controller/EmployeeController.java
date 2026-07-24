@@ -2,7 +2,10 @@ package com.the_employee_portal.Controller;
 
 import com.the_employee_portal.DTO.EmployeeDTO;
 import com.the_employee_portal.Payload.Request.CreateEmployeeRequest;
+import com.the_employee_portal.Payload.Request.UpdateEmployeeRequest;
 import com.the_employee_portal.Payload.Response.CreateEmployeeResponse;
+import com.the_employee_portal.Payload.Response.GetEmployeeResponse;
+import com.the_employee_portal.Payload.Response.UpdateEmployeeResponse;
 import com.the_employee_portal.Service.EmployeeService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -32,28 +35,34 @@ public class EmployeeController {
         return ResponseEntity.status(HttpStatus.CREATED).body(new CreateEmployeeResponse(createdEmployee)); // returns 201 created, with newly saved employee inside of DTO
     }
 
-    /*
+
+
     @GetMapping("/{id}")
-    public ResponseEntity<?> getEmployeeById(@PathVariable Long id){
+    public ResponseEntity<GetEmployeeResponse> getEmployeeById(@PathVariable Long id){
 
+        EmployeeDTO employee = employeeService.getEmployee(id);
 
+        return ResponseEntity.status(HttpStatus.OK).body(new GetEmployeeResponse(employee));
     }
 
 
-    @PutMapping("/{id")
-    public ResponseEntity<?> updateEmployee(@PathVariable Long id, @RequestBody UpdateEmployeeRequest) {
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateEmployee(@PathVariable Long id, @RequestBody UpdateEmployeeRequest request) {
 
+        EmployeeDTO employee = employeeService.updateEmployee(id, request);
+
+        return ResponseEntity.status(HttpStatus.OK).body(new UpdateEmployeeResponse(employee));
     }
 
     // @DeleteMapping deleteEmployee()
-    public ResponseEntity<?> deleteEmployee(@PathVariable Long id) {
+   // public ResponseEntity<?> deleteEmployee(@PathVariable Long id) {
 
-    }
+   //}
 
-    @GetMapping
-    public ResponseEntity<?> getAllEmployees() {
+  //  @GetMapping
+  //  public ResponseEntity<?> getAllEmployees() {
 
-    }
-    */
+   // }
+  //  */
 
 }

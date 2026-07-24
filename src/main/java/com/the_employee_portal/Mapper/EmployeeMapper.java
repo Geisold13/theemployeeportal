@@ -53,4 +53,23 @@ public class EmployeeMapper {
 
         return employeeDTO;
     }
+
+    public void updateEmployeeFromEmployeeDTO(EmployeeDTO updatedEmployeeDTO, Employee employeeToUpdate) {
+
+
+        employeeToUpdate.setFirstName(updatedEmployeeDTO.getFirstName());
+        employeeToUpdate.setMiddleName(updatedEmployeeDTO.getMiddleName());
+        employeeToUpdate.setLastName(updatedEmployeeDTO.getLastName());
+        employeeToUpdate.setEmail(updatedEmployeeDTO.getEmail());
+        employeeToUpdate.setPhoneNumber(updatedEmployeeDTO.getPhoneNumber());
+        employeeToUpdate.setState(updatedEmployeeDTO.getState());
+        employeeToUpdate.setCity(updatedEmployeeDTO.getCity());
+        employeeToUpdate.setZipCode(updatedEmployeeDTO.getZipCode());
+        employeeToUpdate.setStreetAddress(updatedEmployeeDTO.getStreetAddress());
+        employeeToUpdate.setDateOfHire(updatedEmployeeDTO.getDateOfHire());
+        employeeToUpdate.setDateOfTermination(updatedEmployeeDTO.getDateOfTermination());
+        employeeToUpdate.setStatus(updatedEmployeeDTO.getStatus());
+        employeeToUpdate.setJobTitle(updatedEmployeeDTO.getJobTitle());
+
+    }
 }
