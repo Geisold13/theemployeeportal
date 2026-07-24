@@ -9,6 +9,8 @@ import com.the_employee_portal.Payload.Request.UpdateEmployeeRequest;
 import com.the_employee_portal.Repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.*;
+
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
@@ -35,6 +37,24 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employee;
     }
 
+    public List<EmployeeDTO> getAllEmployees() {
+
+        List<Employee> employees = employeeRepository.findAll();
+
+        List<EmployeeDTO> employeeDTOList = new ArrayList<>();
+
+        // for each loop iterates through each employee fetched from the database
+        for (Employee employee : employees) {
+
+            // copies Employee data to EmployeeDTO and then that DTO is saved into the DTO list
+            EmployeeDTO employeeDTO = employeeMapper.employeeToEmployeeDTO(employee);
+            employeeDTOList.add(employeeDTO);
+        }
+
+        return employeeDTOList;
+
+    }
+
     public EmployeeDTO updateEmployee(Long id, UpdateEmployeeRequest request) {
 
         // finds the existing employee in the database
@@ -46,5 +66,13 @@ public class EmployeeServiceImpl implements EmployeeService {
         EmployeeDTO updatedEmployeeDTO = employeeMapper.employeeToEmployeeDTO(employeeRepository.save(employeeToUpdate));
         return updatedEmployeeDTO;
 
+    }
+
+    public void deleteEmployee(Long id) {
+
+        // ensures that there is an employee to delete in the first place
+        Employee employeeToDelete = employeeRepository.findById(id).orElseThrow(() -> new EmployeeNotFoundException(id));
+        // deletes the fetched employee from the db
+        employeeRepository.delete(employeeToDelete);
     }
 }
