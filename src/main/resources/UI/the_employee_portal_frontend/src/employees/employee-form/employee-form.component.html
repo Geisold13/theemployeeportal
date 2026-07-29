@@ -1,0 +1,22 @@
+<div class="employee-form__container">
+
+  <form [formGroup]="employeeForm" (ngSubmit)="submitEmployeeForm()" class="employee-form">
+    <h2>Add Employee</h2>
+    <input type="text" formControlName="firstName" placeholder="First Name" class="employee-form__input">
+    <input type="text" formControlName="middleName" placeholder="Middle Name" class="employee-form__input">
+    <input type="text" formControlName="lastName" placeholder="Last Name" class="employee-form__input">
+    <input type="email" formControlName="email" placeholder="Email" class="employee-form__input">
+    <input type="text" formControlName="phoneNumber" placeholder="Phone Number" class="employee-form__input">
+    <input type="text" formControlName="state" placeholder="State" class="employee-form__input">
+    <input type="text" formControlName="city" placeholder="City" class="employee-form__input">
+    <input type="text" formControlName="zipCode" placeholder="Zip Code" class="employee-form__input">
+    <input type="text" formControlName="streetAddress" placeholder="Street Address" class="employee-form__input">
+    <input type="text" formControlName="jobTitle" placeholder="Job Title" class="employee-form__input">
+    <input type="date" formControlName="dateOfHire" placeholder="Date of Hire" class="employee-form__input">
+    <input type="text" formControlName="status" placeholder="Status" class="employee-form__input">
+    <div class="employee-form__button-container">
+      <button type="submit" class="employee-form__button">Save Employee</button>
+      <button (click)="onCloseEmployeeForm()" class="employee-form__button">Close</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,5 @@
+
+<div class="employee__container">
+<app-employee-list (showEmployeeForm)="changeEmployeeFormVisibility()"></app-employee-list>
+  <app-employee-form *ngIf="isEmployeeFormShowing" (closeEmployeeForm)="changeEmployeeFormVisibility()"></app-employee-form>
+</div>

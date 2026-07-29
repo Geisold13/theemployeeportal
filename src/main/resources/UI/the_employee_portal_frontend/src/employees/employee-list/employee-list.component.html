@@ -1,0 +1,11 @@
+<div class="employee-list__wrapper">
+  <div class="employee-list__content">
+    <div class="employee-list">
+      <div *ngFor="let employee of employees" class="employee">
+        Hi I'm an employee!
+      </div>
+      <button (click)="onAddEmployee()" class="employee__add-employee">Add Employee</button>
+
+    </div>
+  </div>
+</div>
