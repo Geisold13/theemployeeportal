@@ -24,8 +24,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     public EmployeeDTO createEmployee(CreateEmployeeRequest request) {
-
-        Employee newEmployee = employeeMapper.employeeDTOtoEmployee(request.getEmployee());
+        Employee newEmployee = new Employee();
+        employeeMapper.employeeDTOtoEmployee(request.getEmployee(), newEmployee);
 
         EmployeeDTO createdEmployee = employeeMapper.employeeToEmployeeDTO(employeeRepository.save(newEmployee));
         return createdEmployee;

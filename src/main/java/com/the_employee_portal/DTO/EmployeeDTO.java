@@ -25,7 +25,7 @@ public class EmployeeDTO {
     private String email;
 
     @NotBlank
-    @Pattern(regexp = "^[0-9]{10}$", message = "Phone number must contain exactly 10 digits")
+    @Pattern(regexp = "^\\d{3}-?\\d{3}-?\\d{4}$", message = "Phone number must contain exactly 10 digits")
     private String phoneNumber;
 
     @NotBlank
@@ -47,7 +47,7 @@ public class EmployeeDTO {
     @NotNull
     private LocalDate dateOfHire; // Format off Month, Day, Year
 
-    @NotNull
+    //@NotNull
     private LocalDate dateOfTermination;
 
     @NotBlank

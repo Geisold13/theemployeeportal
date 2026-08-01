@@ -10,10 +10,10 @@ public class EmployeeMapper {
     public EmployeeMapper() {
     }
 
-    public Employee employeeDTOtoEmployee(EmployeeDTO employeeDTO) {
+    public void employeeDTOtoEmployee(EmployeeDTO employeeDTO, Employee employee) {
 
-        Employee employee = new Employee();
-        employee.setEmployeeId(employeeDTO.getEmployeeId());
+        //Employee employee = new Employee();
+        //employee.setEmployeeId(employeeDTO.getEmployeeId());
         employee.setFirstName(employeeDTO.getFirstName());
         employee.setMiddleName(employeeDTO.getMiddleName());
         employee.setLastName(employeeDTO.getLastName());
@@ -28,7 +28,6 @@ public class EmployeeMapper {
         employee.setStatus(employeeDTO.getStatus());
         employee.setJobTitle(employeeDTO.getJobTitle());
 
-        return employee;
     }
 
     public EmployeeDTO employeeToEmployeeDTO(Employee employee) {

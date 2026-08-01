@@ -1,0 +1,10 @@
+export enum StatusList {
+
+  HIRED = "HIRED",
+  ONBOARDING = "ONBOARDED",
+  EMPLOYED = "EMPLOYED",
+  TERMINATED = "TERMINATED",
+  RETIRED = "RETIRED",
+  ON_LEAVE = "ON LEAVE"
+
+}
