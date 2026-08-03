@@ -1,11 +1,23 @@
 <div class="employee-list__wrapper">
   <div class="employee-list__content">
     <div class="employee-list">
+      <button (click)="onAddEmployee()" class="employee__add-employee">Add Employee
+        <img class="blank-profile-image" src="images/blank-profile.svg" alt="blank user">
+      </button>
       <div *ngFor="let employee of employees" class="employee">
-        Hi I'm an employee!
+        <div class="employee-image__container">
+          Employee Image Placeholder
+        </div>
+        <div class="employee-information__container">
+          <h3 class="employee-information">{{employee.firstName}} {{employee.lastName}}</h3>
+          <h6 class="employee-information">
+            {{employee.jobTitle}}</h6>
+         </div>
+        <div class="employee-buttons__container">
+          <button class="employee-button view-button">View</button>
+          <button class="employee-button delete-button" (click)="onDeleteEmployee(employee.employeeId)">Delete</button>
+        </div>
       </div>
-      <button (click)="onAddEmployee()" class="employee__add-employee">Add Employee</button>
-
     </div>
   </div>
 </div>

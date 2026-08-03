@@ -6,6 +6,7 @@ import {StateList} from "../../enums/state-list.enum";
 import {StatusList} from "../../enums/status-list.enum";
 import {CreateEmployeeRequest} from "../../model/create-employee-request.model";
 import {EmployeeService} from "../../services/employee.service";
+import {CreateEmployeeResponse} from "../../model/create-employee-response";
 
 @Component({
   selector: 'app-employee-form',
@@ -25,6 +26,9 @@ export class EmployeeFormComponent {
   // creates event to send Employees component (parent)
   @Output()
   closeEmployeeForm = new EventEmitter<void>();
+
+  @Output()
+  createdEmployee = new EventEmitter<CreateEmployeeResponse>();
 
   states = Object.values(StateList);
   statuses =  Object.values(StatusList);
@@ -61,7 +65,7 @@ export class EmployeeFormComponent {
       this.employeeService.createEmployee(request).subscribe({
 
         next: (employee: any) => {
-
+          this.createdEmployee.emit(employee);
         },
 
         error: (error) => {

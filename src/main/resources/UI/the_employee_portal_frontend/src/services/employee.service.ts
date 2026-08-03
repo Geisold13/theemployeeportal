@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {CreateEmployeeRequest} from "../model/create-employee-request.model";
 import {CreateEmployeeResponse} from "../model/create-employee-response";
+import {GetEmployeesResponse} from "../model/get-employees-reponse";
 
 @Injectable({
   providedIn: 'root'
@@ -24,15 +25,15 @@ export class EmployeeService {
 
   }
 
-  getAllEmployees() {
-
+  getAllEmployees(): Observable<GetEmployeesResponse> {
+    return this.http.get<GetEmployeesResponse>(`${this.employeeApiUrl}`);
   }
 
   updateEmployee() {
 
   }
 
-  deleteEmployee() {
-
+  deleteEmployee(employeeId: number): Observable<any> {
+    return this.http.delete(`${this.employeeApiUrl}/${employeeId}`);
   }
 }

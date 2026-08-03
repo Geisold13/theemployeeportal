@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {NgForOf} from "@angular/common";
+import {Employee} from "../../model/employee.model";
 
 @Component({
   selector: 'app-employee-list',
@@ -12,18 +13,25 @@ import {NgForOf} from "@angular/common";
 })
 export class EmployeeListComponent {
 
-  employees: number[] = [];
 
   // creates event to send to Employees component (Parent)
   @Output()
   showEmployeeForm = new EventEmitter<void>();
 
+  @Output()
+  deleteEmployee = new EventEmitter<number>();
+
+  @Input()
+  employees: Employee[] = [];
 
   onAddEmployee(): void {
     // emits the Event to Employees (Parent), where parent can then change the state to show the form
     this.showEmployeeForm.emit();
-    //this.employees.push(1);
-   // console.log(this.employees.length);
   }
+
+  onDeleteEmployee(employeeId: number) {
+    this.deleteEmployee.emit(employeeId);
+  }
+
 
 }
