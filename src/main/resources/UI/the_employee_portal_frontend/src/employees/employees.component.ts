@@ -7,6 +7,7 @@ import {CreateEmployeeResponse} from "../model/create-employee-response";
 import {OnInit} from "@angular/core";
 import {EmployeeService} from "../services/employee.service";
 import {GetEmployeesResponse} from "../model/get-employees-reponse";
+import {EmployeeProfileComponent} from "./employee-profile/employee-profile.component";
 
 @Component({
   selector: 'app-employees',
@@ -14,7 +15,8 @@ import {GetEmployeesResponse} from "../model/get-employees-reponse";
   imports: [
     EmployeeListComponent,
     EmployeeFormComponent,
-    NgIf
+    NgIf,
+    EmployeeProfileComponent
   ],
   templateUrl: './employees.component.html',
   styleUrl: './employees.component.css'
@@ -22,8 +24,28 @@ import {GetEmployeesResponse} from "../model/get-employees-reponse";
 export class EmployeesComponent implements OnInit{
 
   isEmployeeFormShowing: boolean = false;
+  isEmployeeProfileShowing: boolean = false;
 
   employees: Employee[] = [];
+
+  // ? means Employee can be undefined (may not exist)
+  currentEmployee?: Employee = {
+    employeeId: 0,
+    firstName: "",
+    middleName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    state: "",
+    city: "",
+    zipCode: "",
+    streetAddress: "",
+    jobTitle: "",
+    dateOfHire: new Date(),
+    dateOfTermination: null,
+    status: ""
+  }
+
 
   constructor(private employeeService: EmployeeService) {
   }
@@ -73,6 +95,18 @@ export class EmployeesComponent implements OnInit{
       }
 
     });
+  }
+
+  viewEmployeeProfile(employeeId: number) {
+    this.isEmployeeProfileShowing = !this.isEmployeeProfileShowing;
+
+    // sets current Employee to Employee with specific employee Id.  Uses the .find function to help filter through all employees
+    this.currentEmployee = this.employees.find(employee => employee.employeeId = employeeId);
+
+  }
+
+  closeEmployeeProfile() {
+    this.isEmployeeProfileShowing = false;
   }
 
 

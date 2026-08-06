@@ -1,0 +1,93 @@
+.employee-profile__container {
+  position: fixed;
+
+  /* Means put element 0 pixels from top edge of viewport and 0 pixels from left edge of viewport */
+  top: 0;
+  left: 0;
+
+  /* Makes element the entire size of the viewport */
+  width: 100vw;
+  height: 100vh;
+
+  background: rgba(0, 0, 0, 0.5);
+
+  /* Moves element forward so it overlays everything else */
+  z-index: 1000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.employee-profile {
+
+  width: 800px;
+  height: 500px;
+
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 0 0 10px gray;
+
+  display: flex;
+
+}
+
+.employee-profile__left, .employee-profile__right {
+  width: 400px;
+  padding: 25px;
+  height: auto;
+  border: 1px solid orange;
+}
+
+.employee-profile__photo {
+  width: 350px;
+  height: 350px;
+  border: 1px solid black;
+}
+
+.employee-profile__button {
+  width: 100px;
+  height: 30px;
+}
+
+.employee-profile__right {
+
+  display: flex;
+  flex-direction: column;
+
+}
+
+.employee-profile-navigation__container {
+
+  box-shadow: 0 0 10px gray;
+
+
+}
+
+.employee-profile-navigation__button {
+  width: 25%;
+  height: 40px;
+  border: none;
+
+}
+
+.employee-profile-right__content {
+  border: 1px solid black;
+}
+
+.employee-profile__information {
+  width: 163px;
+  height: 30px;
+  border: 1px solid black;
+}
+
+
+.active {
+  background-color: dodgerblue;
+
+}
+
+.inactive {
+  background-color: white;
+}

@@ -21,6 +21,9 @@ export class EmployeeListComponent {
   @Output()
   deleteEmployee = new EventEmitter<number>();
 
+  @Output()
+  viewEmployee = new EventEmitter<number>();
+
   @Input()
   employees: Employee[] = [];
 
@@ -31,6 +34,10 @@ export class EmployeeListComponent {
 
   onDeleteEmployee(employeeId: number) {
     this.deleteEmployee.emit(employeeId);
+  }
+
+  onViewEmployee(employeeId: number) {
+    this.viewEmployee.emit(employeeId);
   }
 
 

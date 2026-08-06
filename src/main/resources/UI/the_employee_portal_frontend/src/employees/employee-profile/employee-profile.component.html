@@ -1,0 +1,43 @@
+<div class="employee-profile__container">
+  <div class="employee-profile">
+    <div class="employee-profile__left">
+      <img src="" class="employee-profile__photo">
+      <button class="employee-profile__button">Change Photo</button>
+      <button class="employee-profile__button">Edit Profile</button>
+      <button class="employee-profile__button" (click)="onCloseEmployeeProfile()">Close</button>
+    </div>
+    <div class="employee-profile__right">
+      <div class="employee-profile-navigation__container">
+        <button class="employee-profile-navigation__button" (click)="onClickEmployeePage(generalInfoButton)" #generalInfoButton [ngClass]="isGeneralInfoShowing ? 'active' : 'inactive'">General</button>
+        <button class="employee-profile-navigation__button" (click)="onClickEmployeePage(contactInfoButton)" #contactInfoButton [ngClass]="isContactInfoShowing ? 'active' : 'inactive'">Contact Info</button>
+        <button class="employee-profile-navigation__button" (click)="onClickEmployeePage(personalInfoButton)" #personalInfoButton [ngClass]="isPersonalInfoShowing ? 'active' : 'inactive'">Personal</button>
+        <button class="employee-profile-navigation__button" (click)="onClickEmployeePage(employmentInfoButton)" #employmentInfoButton [ngClass]="isEmploymentInfoShowing ? 'active' : 'inactive'">Employment</button>
+      </div>
+      <div class="employee-profile-right__content">
+      <form [formGroup]="editEmployeeForm">
+          <div *ngIf="isGeneralInfoShowing">
+            <h5>First Name</h5>
+            <h5>Middle Name</h5>
+            <h5>Last Name</h5>
+            <h5>State</h5>
+            <h5>City</h5>
+            <h5>Zip Code</h5>
+          </div>
+          <div *ngIf="isContactInfoShowing">
+            <h5>Phone Number</h5>
+            <h5>Email</h5>
+          </div>
+          <div *ngIf="isPersonalInfoShowing">
+            <h5>Date of Birth</h5>
+            <h5>Social Security Number</h5>
+          </div>
+          <div *ngIf="isEmploymentInfoShowing">
+            <h5>Date Of Hire</h5>
+            <h5>Job Title</h5>
+            <h5>Employment Status</h5>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

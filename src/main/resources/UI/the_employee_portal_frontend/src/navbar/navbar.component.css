@@ -1,0 +1,50 @@
+.navigation-bar__container {
+
+  display: flex;
+  justify-content: center;
+
+  box-shadow: 0 0 10px gray;
+}
+
+.navigation {
+  width: 1450px;
+  display: flex;
+  justify-content: center;
+}
+
+.navigation-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 900px;
+  height: 40px;
+
+  list-style-type: none;
+  text-decoration: none;
+
+}
+
+.navigation-list__item-link {
+  text-decoration: none;
+  color: black;
+}
+
+.navigation-list__item-link:hover {
+
+}
+
+.navigation-list__item-link:visited {
+  color: black;
+}
+
+.navigation-list__item {
+
+}
+
+.navigation-list__item:hover {
+  color: dodgerblue;
+
+}
+
+

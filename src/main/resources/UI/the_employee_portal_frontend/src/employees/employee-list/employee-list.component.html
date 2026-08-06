@@ -14,7 +14,7 @@
             {{employee.jobTitle}}</h6>
          </div>
         <div class="employee-buttons__container">
-          <button class="employee-button view-button">View</button>
+          <button class="employee-button view-button" (click)="onViewEmployee(employee.employeeId)">View</button>
           <button class="employee-button delete-button" (click)="onDeleteEmployee(employee.employeeId)">Delete</button>
         </div>
       </div>
