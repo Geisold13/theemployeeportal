@@ -38,6 +38,7 @@ export class EmployeeListComponent {
 
   onViewEmployee(employeeId: number) {
     this.viewEmployee.emit(employeeId);
+    console.log(this.employees[employeeId]);
   }
 
 

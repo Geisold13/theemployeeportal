@@ -14,6 +14,5 @@ export interface Employee {
   dateOfHire: Date;
   dateOfTermination: Date | null;
   status: String;
-
-
+  photoUrl: String;
 }

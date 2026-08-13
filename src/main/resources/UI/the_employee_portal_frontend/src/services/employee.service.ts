@@ -36,4 +36,8 @@ export class EmployeeService {
   deleteEmployee(employeeId: number): Observable<any> {
     return this.http.delete(`${this.employeeApiUrl}/${employeeId}`);
   }
+
+  updateEmployeePhoto(employeeId: number, formData: FormData): Observable<any> {
+    return this.http.put(`${this.employeeApiUrl}/${employeeId}/photo`, formData);
+  }
 }

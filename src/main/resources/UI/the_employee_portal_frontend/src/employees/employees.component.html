@@ -2,5 +2,5 @@
 <div class="employee__container">
 <app-employee-list (showEmployeeForm)="changeEmployeeFormVisibility()" (deleteEmployee)="deleteEmployee($event)" (viewEmployee)="viewEmployeeProfile($event)" [employees]="employees"></app-employee-list>
   <app-employee-form *ngIf="isEmployeeFormShowing" (closeEmployeeForm)="changeEmployeeFormVisibility()" (createdEmployee)="onEmployeeCreated($event)"></app-employee-form>
-  <app-employee-profile *ngIf="isEmployeeProfileShowing" (closeEmployeeProfile)="closeEmployeeProfile()"></app-employee-profile>
+  <app-employee-profile *ngIf="isEmployeeProfileShowing" (closeEmployeeProfile)="closeEmployeeProfile()" (changeEmployeePhoto)="changeEmployeePhoto($event)" [employee]="currentEmployee"></app-employee-profile>
 </div>

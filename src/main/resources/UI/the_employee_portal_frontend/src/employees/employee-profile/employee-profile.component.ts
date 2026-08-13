@@ -1,20 +1,21 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {NgClass, NgIf, NgStyle} from "@angular/common";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {Employee} from "../../model/employee.model";
+import {OnChanges} from "@angular/core";
 
 @Component({
   selector: 'app-employee-profile',
   standalone: true,
   imports: [
     NgIf,
-    NgStyle,
     NgClass,
     ReactiveFormsModule
   ],
   templateUrl: './employee-profile.component.html',
   styleUrl: './employee-profile.component.css'
 })
-export class EmployeeProfileComponent {
+export class EmployeeProfileComponent implements OnChanges{
 
   isGeneralInfoShowing: boolean = true;
   isContactInfoShowing: boolean = false;
@@ -23,12 +24,14 @@ export class EmployeeProfileComponent {
 
   editEmployeeForm: FormGroup;
 
+  @Input() employee?: Employee;
+
   @Output()
   closeEmployeeProfile = new EventEmitter<void>;
 
-  onCloseEmployeeProfile() {
-    this.closeEmployeeProfile.emit();
-  }
+  @Output()
+  changeEmployeePhoto = new EventEmitter<any>;
+
 
   constructor(private editEmployeeFb: FormBuilder) {
 
@@ -43,12 +46,37 @@ export class EmployeeProfileComponent {
       zipCode: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5), Validators.pattern(/^\d{5}$/)]],
       streetAddress: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100), Validators.pattern(/^[A-Za-z0-9]+(?:[ .,'#/-][A-Za-z0-9]+)*$/)]],
       jobTitle: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
-      dateOfHire: [Date, [Validators.required]],
-      status: ['', [Validators.required]]
+      dateOfHire: [new Date(), [Validators.required]],
+      status: ['', [Validators.required]],
+      photoUrl: ['']
     });
   }
 
+  ngOnChanges() {
+    if (this.employee) {
+      this.editEmployeeForm.patchValue({
+        firstName: this.employee.firstName,
+        middleName: this.employee.middleName,
+        lastName: this.employee.lastName,
+        email: this.employee.email,
+        phoneNumber: this.employee.phoneNumber,
+        state: this.employee.state,
+        city: this.employee.city,
+        zipCode: this.employee.zipCode,
+        streetAddress: this.employee.streetAddress,
+        jobTitle: this.employee.jobTitle,
+        dateOfHire: this.employee.dateOfHire,
+        status: this.employee.status,
+        photoUrl: this.employee.photoUrl
+      });
+    }
+    console.log(this.employee);
+    this.editEmployeeForm.disable();
+
+  }
+
   onClickEmployeePage(button: HTMLButtonElement) {
+
 
     let currentPage: string | null = button.textContent;
 
@@ -82,5 +110,30 @@ export class EmployeeProfileComponent {
 
   }
 
-  protected readonly HTMLDivElement = HTMLDivElement;
+  onToggleEditEmployee() {
+
+    if (this.editEmployeeForm.disabled) {
+      this.editEmployeeForm.enable();
+    } else {
+      this.editEmployeeForm.disable();
+    }
+  }
+
+  onCloseEmployeeProfile() {
+    this.closeEmployeeProfile.emit();
+  }
+
+  onChangeEmployeePhoto(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+
+    if (file) {
+      const formData = new FormData();
+      formData.append('photo', file);
+      this.changeEmployeePhoto.emit(formData);
+    }
+
+  }
+
+
 }

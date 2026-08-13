@@ -37,18 +37,32 @@
   width: 400px;
   padding: 25px;
   height: auto;
-  border: 1px solid orange;
 }
 
 .employee-profile__photo {
   width: 350px;
   height: 350px;
-  border: 1px solid black;
+  background-color: lightgrey;
+  object-fit: cover;
 }
 
+.employee-profile-button__container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+}
+
+
 .employee-profile__button {
-  width: 100px;
+
+  margin-bottom: 15px;
+  width: 170px;
   height: 30px;
+  border-radius: 5px;
+
 }
 
 .employee-profile__right {
@@ -67,19 +81,49 @@
 
 .employee-profile-navigation__button {
   width: 25%;
+  color: black;
   height: 40px;
   border: none;
 
 }
 
 .employee-profile-right__content {
-  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.employee-profile__information {
-  width: 163px;
-  height: 30px;
-  border: 1px solid black;
+.edit-profile-item__label, .edit-profile-input {
+  height: 40px;
+  margin-top: 10px;
+  border: none;
+  font-weight: lighter;
+  font-size: 14px;
+  padding-left: 5px;
+
+  box-shadow: 0 0 2px gray;
+
+}
+
+.edit-profile-item__label {
+  width: 30%;
+  display: flex;
+  align-items: center;
+
+
+}
+
+.edit-profile-input {
+  width: 70%;
+}
+
+.edit-profile-messages__container {
+  width: 100%;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -87,6 +131,7 @@
   background-color: dodgerblue;
 
 }
+
 
 .inactive {
   background-color: white;

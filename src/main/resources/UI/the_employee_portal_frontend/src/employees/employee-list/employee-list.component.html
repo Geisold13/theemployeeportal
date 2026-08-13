@@ -6,7 +6,7 @@
       </button>
       <div *ngFor="let employee of employees" class="employee">
         <div class="employee-image__container">
-          Employee Image Placeholder
+          <img class="employee-image" [src]="'http://localhost:8080' + employee.photoUrl">
         </div>
         <div class="employee-information__container">
           <h3 class="employee-information">{{employee.firstName}} {{employee.lastName}}</h3>
@@ -14,8 +14,8 @@
             {{employee.jobTitle}}</h6>
          </div>
         <div class="employee-buttons__container">
-          <button class="employee-button view-button" (click)="onViewEmployee(employee.employeeId)">View</button>
-          <button class="employee-button delete-button" (click)="onDeleteEmployee(employee.employeeId)">Delete</button>
+          <button class="employee-button primary-button-style" (click)="onViewEmployee(employee.employeeId)">View</button>
+          <button class="employee-button primary-close-button-style" (click)="onDeleteEmployee(employee.employeeId)">Delete</button>
         </div>
       </div>
     </div>

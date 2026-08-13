@@ -52,6 +52,9 @@ public class Employee {
     @Column(name = "status", nullable = false)
     private String status;
 
+    @Column(name = "photo_url")
+    private String photoUrl;
+
     public Employee() {
 
     }
@@ -166,5 +169,13 @@ public class Employee {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 }

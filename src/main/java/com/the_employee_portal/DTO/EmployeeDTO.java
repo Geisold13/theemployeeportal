@@ -53,6 +53,8 @@ public class EmployeeDTO {
     @NotBlank
     private String status;
 
+    private String photoUrl;
+
     public EmployeeDTO() {
 
     }
@@ -167,5 +169,13 @@ public class EmployeeDTO {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 }

@@ -49,6 +49,7 @@ public class EmployeeMapper {
         employeeDTO.setDateOfTermination(employee.getDateOfTermination());
         employeeDTO.setStatus(employee.getStatus());
         employeeDTO.setJobTitle(employee.getJobTitle());
+        employeeDTO.setPhotoUrl(employee.getPhotoUrl());
 
         return employeeDTO;
     }
@@ -69,6 +70,7 @@ public class EmployeeMapper {
         employeeToUpdate.setDateOfTermination(updatedEmployeeDTO.getDateOfTermination());
         employeeToUpdate.setStatus(updatedEmployeeDTO.getStatus());
         employeeToUpdate.setJobTitle(updatedEmployeeDTO.getJobTitle());
+        employeeToUpdate.setPhotoUrl(updatedEmployeeDTO.getPhotoUrl());
 
     }
 }

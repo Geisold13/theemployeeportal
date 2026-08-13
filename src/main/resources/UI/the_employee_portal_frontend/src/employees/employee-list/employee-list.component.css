@@ -39,6 +39,12 @@
   background-color: gray;
 }
 
+.employee-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
 .employee-information__container {
   display: flex;
   flex-direction: column;
@@ -60,25 +66,7 @@
 .employee-button {
   width: 70px;
   height: 30px;
-  border: none;
 }
-
-.view-button {
-  background-color: dodgerblue;
-}
-
-.view-button:hover {
-  background-color: deepskyblue;
-}
-
-.delete-button {
-  background-color: darkred;
-}
-
-.delete-button:hover {
-  background-color: red;
-}
-
 
 .employee__add-employee {
   width: 200px;
@@ -86,7 +74,7 @@
 
   margin: 25px;
 
-  background-color: lightgreen;
+  background-color: var(--primary-button-color);
 
   border-radius: 30px;
   border: none;
@@ -95,7 +83,11 @@
 }
 
 .employee__add-employee:hover {
-  background-color: darkseagreen;
+  background-color: var(--primary-button-hover-color)
+}
+
+.employee__add-employee:active {
+  background-color: var(--primary-button-active-color);
 }
 
 

@@ -43,7 +43,8 @@ export class EmployeesComponent implements OnInit{
     jobTitle: "",
     dateOfHire: new Date(),
     dateOfTermination: null,
-    status: ""
+    status: "",
+    photoUrl: ""
   }
 
 
@@ -101,12 +102,32 @@ export class EmployeesComponent implements OnInit{
     this.isEmployeeProfileShowing = !this.isEmployeeProfileShowing;
 
     // sets current Employee to Employee with specific employee Id.  Uses the .find function to help filter through all employees
-    this.currentEmployee = this.employees.find(employee => employee.employeeId = employeeId);
+    this.currentEmployee = this.employees.find(employee => employee.employeeId === employeeId);
 
   }
 
   closeEmployeeProfile() {
     this.isEmployeeProfileShowing = false;
+  }
+
+  changeEmployeePhoto(formData: FormData) {
+    console.log("Employee Service Called!");
+    // if employee doesn't exist, return
+    if (!this.currentEmployee) {
+      return;
+    }
+
+
+    this.employeeService.updateEmployeePhoto(this.currentEmployee.employeeId, formData).subscribe({
+
+      next: (data) => {
+
+      },
+
+      error: (err) => {
+        console.error(err);
+      }
+    })
   }
 
 

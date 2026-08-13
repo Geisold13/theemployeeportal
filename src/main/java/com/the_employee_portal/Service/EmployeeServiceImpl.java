@@ -8,7 +8,13 @@ import com.the_employee_portal.Payload.Request.CreateEmployeeRequest;
 import com.the_employee_portal.Payload.Request.UpdateEmployeeRequest;
 import com.the_employee_portal.Repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.*;
 
 @Service
@@ -74,5 +80,28 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employeeToDelete = employeeRepository.findById(id).orElseThrow(() -> new EmployeeNotFoundException(id));
         // deletes the fetched employee from the db
         employeeRepository.delete(employeeToDelete);
+    }
+
+    public void updateEmployeePhoto(Long id, MultipartFile photo) throws IOException {
+
+        String fileName = "profile.jpg";
+        String photoUrl = "/uploads/employees/" + id + "/" + fileName;
+
+        Path destination = Paths.get(
+                "C:/Users/17154/Desktop/uploads/employees/" + id + "/" + fileName
+        );
+
+        Files.createDirectories(destination.getParent());
+
+        Files.copy(
+          photo.getInputStream(),
+          destination,
+                StandardCopyOption.REPLACE_EXISTING
+        );
+
+        Employee employee = employeeRepository.findById(id).orElseThrow(() -> new EmployeeNotFoundException(id));
+        employee.setPhotoUrl(photoUrl);
+        employeeRepository.save(employee);
+
     }
 }

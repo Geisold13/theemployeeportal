@@ -6,6 +6,86 @@
   box-sizing: border-box;
 }
 
-.input-error {
+.input-error, .important {
   color: red;
 }
+
+
+
+:root {
+  --primary-button-color: rgba(39, 144, 245, 1);
+  --primary-button-active-color: rgba(0, 61, 119, 1);
+  --primary-button-hover-color: rgba(101, 175, 247, 1);
+  --primary-button-selected-color: rgba(0, 61, 119, 1);
+
+  --primary-disabled-button-border-color: rgba(167, 167, 167, 1);
+  --primary-disabled-button-color: white;
+  --primary-disabled-button-hover-color: rgba(225, 223, 223, 1);
+  --primary-disabled-button-active-color: rgba(88, 88, 88, 1);
+
+
+  --close-button-border-color:  rgba(255, 53, 53, 1);
+  --close-button-hover-color:  rgba(255, 131, 131, 1);
+  --close-button-active-color: rgba(255, 53, 53, 1);
+  --close-button-active-text-color: white;
+  --close-button-color: white;
+}
+
+button {
+  border: none;
+  color: white;
+  border-radius: 5px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.primary-button-style {
+  background-color: var(--primary-button-color);
+}
+
+.primary-button-style:hover {
+  background-color: var(--primary-button-hover-color);
+}
+
+.primary-button-style:active {
+  background-color: var(--primary-button-active-color);
+}
+
+.primary-button-selected-style {
+  background-color: var(--primary-button-active-color);
+  border: 2px solid black;
+}
+
+.primary-close-button-style {
+  border: 1px solid var(--close-button-border-color);
+  color: var(--close-button-border-color);
+  background-color: white;
+}
+
+.primary-close-button-style:hover {
+  background-color: var(--close-button-hover-color);
+  color: var(--close-button-active-text-color);
+}
+
+.primary-close-button-style:active {
+  background-color: var(--close-button-active-color);
+  color: var(--close-button-active-text-color);
+}
+
+.primary-disabled-button-style {
+  border: 1px solid var(--primary-disabled-button-border-color);
+  color: var(--primary-disabled-button-border-color);
+  background-color: var(--primary-disabled-button-color);
+}
+
+.primary-disabled-button-style:hover {
+  background-color: var(--primary-disabled-button-hover-color);
+}
+
+.primary-disabled-button-style:active {
+  background-color: var(--primary-disabled-button-active-color);
+}
+

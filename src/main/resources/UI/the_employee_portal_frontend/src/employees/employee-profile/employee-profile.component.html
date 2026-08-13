@@ -1,10 +1,14 @@
 <div class="employee-profile__container">
   <div class="employee-profile">
     <div class="employee-profile__left">
-      <img src="" class="employee-profile__photo">
-      <button class="employee-profile__button">Change Photo</button>
-      <button class="employee-profile__button">Edit Profile</button>
-      <button class="employee-profile__button" (click)="onCloseEmployeeProfile()">Close</button>
+      <img [src]="'http://localhost:8080' + employee?.photoUrl" class="employee-profile__photo" alt="employee photo">
+      <div class="employee-profile-button__container">
+        <input #fileInput type="file" accept="image/*" (change)="onChangeEmployeePhoto($event)" hidden>
+        <button class="employee-profile__button primary-button-style" type="button" (click)="fileInput.click()">Change Photo</button>
+        <button class="employee-profile__button" (click)="onToggleEditEmployee()" [ngClass]="this.editEmployeeForm.enabled ? 'primary-button-selected-style' : 'primary-button-style'">Edit Profile</button>
+        <button class="employee-profile__button primary-close-button-style" (click)="onCloseEmployeeProfile()">Close</button>
+        <button class="employee-profile__button primary-button-style" [disabled]="this.editEmployeeForm.disabled">Save Profile</button>
+      </div>
     </div>
     <div class="employee-profile__right">
       <div class="employee-profile-navigation__container">
@@ -15,28 +19,47 @@
       </div>
       <div class="employee-profile-right__content">
       <form [formGroup]="editEmployeeForm">
-          <div *ngIf="isGeneralInfoShowing">
-            <h5>First Name</h5>
-            <h5>Middle Name</h5>
-            <h5>Last Name</h5>
-            <h5>State</h5>
-            <h5>City</h5>
-            <h5>Zip Code</h5>
+          <div *ngIf="isGeneralInfoShowing" class="employee-profile-right__content">
+            <h5 class="edit-profile-item__label">First Name</h5>
+            <input formControlName="firstName" class="edit-profile-input">
+            <h5 class="edit-profile-item__label">Middle Name</h5>
+            <input formControlName="middleName" class="edit-profile-input">
+            <h5 class="edit-profile-item__label">Last Name</h5>
+            <input formControlName="lastName" class="edit-profile-input">
+            <h5 class="edit-profile-item__label">State Name</h5>
+            <input formControlName="state" class="edit-profile-input">
+            <h5 class="edit-profile-item__label">City</h5>
+            <input formControlName="city" class="edit-profile-input">
+            <h5 class="edit-profile-item__label">Zip Code</h5>
+            <input formControlName="zipCode" class="edit-profile-input">
+            <h5 class="edit-profile-item__label">Street Address</h5>
+            <input formControlName="streetAddress" class="edit-profile-input">
           </div>
-          <div *ngIf="isContactInfoShowing">
-            <h5>Phone Number</h5>
-            <h5>Email</h5>
+          <div *ngIf="isContactInfoShowing" class="employee-profile-right__content">
+            <h5 class="edit-profile-item__label">Phone Number</h5>
+            <input formControlName="phoneNumber" class="edit-profile-input">
+            <h5 class="edit-profile-item__label">Email</h5>
+            <input formControlName="email" class="edit-profile-input">
           </div>
-          <div *ngIf="isPersonalInfoShowing">
+          <div *ngIf="isPersonalInfoShowing" class="employee-profile-right__content">
+            <!--
             <h5>Date of Birth</h5>
             <h5>Social Security Number</h5>
+
+            -->
           </div>
-          <div *ngIf="isEmploymentInfoShowing">
-            <h5>Date Of Hire</h5>
-            <h5>Job Title</h5>
-            <h5>Employment Status</h5>
+          <div *ngIf="isEmploymentInfoShowing" class="employee-profile-right__content">
+            <h5 class="edit-profile-item__label">Date of Hire</h5>
+            <input formControlName="dateOfHire" class="edit-profile-input">
+            <h5 class="edit-profile-item__label">Job Title</h5>
+            <input formControlName="jobTitle" class="edit-profile-input">
+            <h5 class="edit-profile-item__label">Status</h5>
+            <input formControlName="status" class="edit-profile-input">
           </div>
         </form>
+        <div class="edit-profile-messages__container">
+          <h5 *ngIf="this.editEmployeeForm.enabled" class="important">Currently In Edit Mode.</h5>
+        </div>
       </div>
     </div>
   </div>

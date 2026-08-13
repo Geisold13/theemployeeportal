@@ -13,7 +13,9 @@ import org.springframework.boot.micrometer.observation.autoconfigure.Observation
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -90,6 +92,14 @@ public class EmployeeController {
         List<EmployeeDTO> employees = employeeService.getAllEmployees();
 
         return ResponseEntity.status(HttpStatus.OK).body(new GetAllEmployeesResponse(employees));
+    }
+
+    @PutMapping("/{id}/photo")
+    public ResponseEntity<?> updateEmployeePhoto(@PathVariable Long id, @RequestParam("photo") MultipartFile photo) throws IOException {
+
+        employeeService.updateEmployeePhoto(id, photo);
+
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
 

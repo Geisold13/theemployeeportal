@@ -15,5 +15,6 @@ export interface CreateEmployeeResponse {
     dateOfHire: Date;
     dateOfTermination: Date | null;
     status: String;
+    photoUrl: String;
   }
 }
